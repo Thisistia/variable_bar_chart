@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 使用第3版 -->
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <title>Document</title>
+
+
+
+
+</head>
+
+<body>
+    <script>
+        var svg = d3.select("body").append("svg").attr({
+            width: 600,
+            height: 1000
+        });
+
+        //製作迴圈 i=i+1(=i++)
+        for (var i = 0; i < 20; i = i + 1) {
+
+            //設定亂數範圍
+            var num = random(20, 300);
+
+            //畫出長條圖
+            svg.append("rect").attr({
+                x: 10,
+                y: 10 + 15 * i,
+                width: num,
+                height: 10,
+                fill: "red"
+            });
+
+            //加上文字
+            svg.append("text").attr({
+                x: 10 + 15 + num,
+                y: 20 + 15 * i,
+                "font-size": 12
+            }).text(num);
+        }
+
+        //產生亂數值
+        function random(N, M) {
+            return Math.floor(Math.random() * (M - N + 1) + N);
+        }
+
+    </script>
+
+</body>
+
+</html>
